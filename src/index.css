@@ -12,6 +12,12 @@ body {
 
 .ingredients {
   position: absolute;
+  margin-top: -100px;
+}
+
+.cheese {
+  width: 100%;
+  position: absolute;
 }
 
 /* The container */
@@ -84,4 +90,31 @@ body {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+} */
+
+.z1 {
+  z-index: 1;
+}
+
+.z2 {
+  z-index: 2;
+}
+
+.z3 {
+  z-index: 3;
+}
+.z4 {
+  z-index: 4;
+}
+
+/* .proceedToCheckout {
+  margin-top: 30px;
+  padding: 10px 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  background: orange;
+  border: 0px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
 } */

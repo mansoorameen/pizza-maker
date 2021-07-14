@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Cheese from '../assets/Cheese.png';
 import Basil from '../assets/Basil.png';
 import Mushroom from '../assets/Mushroom.png';
@@ -18,16 +19,89 @@ function Customize({ ingredients, setIngredients }) {
 
     return (
         <div style={{ display: 'flex'}}>
-
             <div style={{ border: '2px solid black', flex: 1}}>
                 <div style={{ maxHeight: 500, maxWidth: 500, position: 'relative'}}>
-                <img src={Cheese} alt='Cheese' height='100%' width='100%' className="ingredients" />
-                <img src={Pineapple} alt='Pineapple' height='100%' width='100%' className="ingredients" />
-                <img src={Basil} alt='Basil' height='100%' width='100%' className="ingredients" />
-                <img src={Mushroom} alt='Mushroom' height='100%' width='100%' className="ingredients" />
-                <img src={Olive} alt='Olive' height='100%' width='100%' className="ingredients" />
-                <img src={Tomato} alt='Tomato' height='100%' width='100%' className="ingredients" />
+
+                <motion.div
+                initial={{ scale: 0 }}
+                animate={{ 
+                    // y: ingredients["cheese"] ? 100 : -100,
+                    // opacity: ingredients["cheese"] ? 1 : 0,
+                    scale: ingredients["cheese"] ? 1 : 0
+                    }}
+                transition={{ duration: 0.4 }}
+                className="cheese z1"
+                >
+                <img src={Cheese} alt='Cheese' height='100%' width='100%' />
+                </motion.div>
+
+                <motion.div
+                initial={{ opacity: 0}}
+                animate={{ 
+                    y: ingredients["pineapple"] ? 100 : -100,
+                    opacity: ingredients["pineapple"] ? 1 : 0,
+                    }}
+                transition={{ duration: 1 }}
+                className="ingredients z3"
+                >
+               <img src={Pineapple} alt='Pineapple' height='100%' width='100%' />
+                </motion.div>
+
+                <motion.div
+                initial={{ opacity: 0}}
+                animate={{ 
+                    y: ingredients["basil"] ? 100 : -100,
+                    opacity: ingredients["basil"] ? 1 : 0,
+                    }}
+                transition={{ duration: 1 }}
+                className="ingredients z4"
+                >
+                <img src={Basil} alt='Basil' height='100%' width='100%' />
+                </motion.div>
+
+                <motion.div
+                initial={{ opacity: 0}}
+                animate={{ 
+                    y: ingredients["mushroom"] ? 100 : -100,
+                    opacity: ingredients["mushroom"] ? 1 : 0,
+                    }}
+                transition={{ duration: 1 }}
+                className="ingredients z4"
+                >
+                <img src={Mushroom} alt='Mushroom' height='100%' width='100%' />
+                </motion.div>
+
+                <motion.div
+                initial={{ opacity: 0}}
+                animate={{ 
+                    y: ingredients["olive"] ? 100 : -100,
+                    opacity: ingredients["olive"] ? 1 : 0,
+                    }}
+                transition={{ duration: 1 }}
+                className="ingredients z4"
+                >
+                <img src={Olive} alt='Olive' height='100%' width='100%' />
+                </motion.div>
+
+                <motion.div
+                initial={{ opacity: 0}}
+                animate={{ 
+                    y: ingredients["tomato"] ? 100 : -100,
+                    opacity: ingredients["tomato"] ? 1 : 0,
+                    }}
+                transition={{ duration: 1 }}
+                className="ingredients z4"
+                >
+                <img src={Tomato} alt='Tomato' height='100%' width='100%' />
+                </motion.div>
+{/* 
+                <motion.div
+                transition={{ duration: 1 }}
+                className=""
+                > */}
                 <img src={Base} alt='Pizza Base' height='100%' width='100%' />
+                {/* </motion.div> */}
+
                 </div>
             </div>
 
@@ -64,6 +138,7 @@ function Customize({ ingredients, setIngredients }) {
             </label>
 
             </div>
+            {JSON.stringify(ingredients)}
         </div>
     )
 }
