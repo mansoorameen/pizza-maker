@@ -3,7 +3,7 @@ import Checkout from './components/Checkout'
 import Customize from './components/Customize';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './index.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [ ingredients, setIngredients] = useState({
@@ -13,7 +13,14 @@ function App() {
     olive: false,
     pineapple: false,
     tomato: false
-  })
+  });
+
+  useEffect(() => {
+    const data = localStorage.getItem('ingredients');
+    if(data) {
+      setIngredients(JSON.parse(data))
+    }
+  }, [])
 
   return (
     <div className="App">
@@ -24,7 +31,7 @@ function App() {
             <Customize ingredients={ingredients} setIngredients={setIngredients} />
           </Route>
           <Route path="/checkout">
-            <Checkout />
+            <Checkout ingredients={ingredients} />
           </Route>
         </Switch>
         </Router>

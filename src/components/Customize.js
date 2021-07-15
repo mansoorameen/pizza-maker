@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
 import Cheese from '../assets/Cheese.png';
 import Basil from '../assets/Basil.png';
@@ -11,22 +12,28 @@ import Tomato from '../assets/Tomato.png';
 
 function Customize({ ingredients, setIngredients }) {
 
-    const changeIngredients = (event) => {
+    // const changeIngredients = (event) => {
+    //     let newIngredients = JSON.parse(JSON.stringify(ingredients));
+    //     newIngredients[event] = !newIngredients[event];
+    //     setIngredients(newIngredients);
+    // }
+
+    const onChange = (event, name) => {
         let newIngredients = JSON.parse(JSON.stringify(ingredients));
-        newIngredients[event] = !newIngredients[event];
+        newIngredients[name] = event;
         setIngredients(newIngredients);
+        localStorage.setItem("ingredients", JSON.stringify(newIngredients));
     }
+
 
     return (
         <div style={{ display: 'flex'}}>
-            <div style={{ border: '2px solid black', flex: 1}}>
+            <div style={{ border: '2px solid black', flex: 1, padding: '2rem' , display: 'grid', placeItems: 'center' }}>
                 <div style={{ maxHeight: 500, maxWidth: 500, position: 'relative'}}>
 
                 <motion.div
                 initial={{ scale: 0 }}
                 animate={{ 
-                    // y: ingredients["cheese"] ? 100 : -100,
-                    // opacity: ingredients["cheese"] ? 1 : 0,
                     scale: ingredients["cheese"] ? 1 : 0
                     }}
                 transition={{ duration: 0.4 }}
@@ -94,51 +101,58 @@ function Customize({ ingredients, setIngredients }) {
                 >
                 <img src={Tomato} alt='Tomato' height='100%' width='100%' />
                 </motion.div>
-{/* 
-                <motion.div
-                transition={{ duration: 1 }}
-                className=""
-                > */}
+
                 <img src={Base} alt='Pizza Base' height='100%' width='100%' />
-                {/* </motion.div> */}
 
                 </div>
             </div>
 
             <div style={{ border: '2px solid black', flex: 1}}>
-               
+               <div style={{ padding: '7rem 3rem'}}>
             <label class="container-checkbox">Cheese
-                <input type="checkbox" id="cheese" onChange={(e) => changeIngredients(e.target.id)} />
+                <input checked={ingredients["cheese"]} type="checkbox" id="cheese" onChange={(e) => onChange(e.target.checked, e.target.id)} />
                 <span class="checkmark"></span>
             </label>
 
             <label class="container-checkbox">Basil
-                <input type="checkbox" id="basil" onChange={(e) => changeIngredients(e.target.id)} />
+                <input checked={ingredients["basil"]} type="checkbox" id="basil" onChange={(e) => onChange(e.target.checked, e.target.id)} />
                 <span class="checkmark"></span>
             </label>
 
             <label class="container-checkbox">Mushroom
-                <input type="checkbox" id="mushroom" onChange={(e) => changeIngredients(e.target.id)} />
+                <input checked={ingredients["mushroom"]} type="checkbox" id="mushroom" onChange={(e) => onChange(e.target.checked, e.target.id)} />
                 <span class="checkmark"></span>
             </label>
 
             <label class="container-checkbox">Olive
-                <input type="checkbox" id="olive" onChange={(e) => changeIngredients(e.target.id)} />
+                <input checked={ingredients["olive"]} type="checkbox" id="olive" onChange={(e) => onChange(e.target.checked, e.target.id)} />
                 <span class="checkmark"></span>
             </label>
 
             <label class="container-checkbox">Pineapple
-                <input type="checkbox" id="pineapple" onChange={(e) => changeIngredients(e.target.id)} />
+                <input checked={ingredients["pineapple"]} type="checkbox" id="pineapple" onChange={(e) => onChange(e.target.checked, e.target.id)} />
                 <span class="checkmark"></span>
             </label>
 
             <label class="container-checkbox">Tomato
-                <input type="checkbox" id="tomato" onChange={(e) => changeIngredients(e.target.id)} />
+                <input type="checkbox" checked={ingredients["tomato"]} 
+                id="tomato" onChange={(e) => onChange(e.target.checked, e.target.id)} />
                 <span class="checkmark"></span>
             </label>
+            
+            
+            <Link to="/checkout">
+            
+            <button 
+            style={{ backgroundColor: 'yellow', padding: '0.5rem', borderRadius: '50px', margin: '1rem 1rem 1rem 2rem'  }}>
+                <h3>Checkout</h3>
+                </button>
+        
+            </Link>
+            
+            </div>
 
             </div>
-            {JSON.stringify(ingredients)}
         </div>
     )
 }
