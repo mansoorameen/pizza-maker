@@ -28,7 +28,7 @@ function Customize({ ingredients, setIngredients }) {
 
     return (
         <div style={{ display: 'flex'}}>
-            <div style={{ border: '2px solid black', flex: 1, padding: '2rem' , display: 'grid', placeItems: 'center' }}>
+            <div style={{ flex: 1, padding: '2rem' , display: 'grid', placeItems: 'center' }}>
                 <div style={{ maxHeight: 500, maxWidth: 500, position: 'relative'}}>
 
                 <motion.div
@@ -107,7 +107,7 @@ function Customize({ ingredients, setIngredients }) {
                 </div>
             </div>
 
-            <div style={{ border: '2px solid black', flex: 1}}>
+            <div style={{ flex: 1}}>
                <div style={{ padding: '7rem 3rem'}}>
             <label class="container-checkbox">Cheese
                 <input checked={ingredients["cheese"]} type="checkbox" id="cheese" onChange={(e) => onChange(e.target.checked, e.target.id)} />
@@ -140,7 +140,7 @@ function Customize({ ingredients, setIngredients }) {
                 <span class="checkmark"></span>
             </label>
             
-            
+         
             <Link to="/checkout">
             
             <button 
