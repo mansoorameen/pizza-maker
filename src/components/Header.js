@@ -8,7 +8,7 @@ function Header() {
             <img src={logo} alt="logo" height= '40px' />
             <Link to='/' style={{textDecoration:"none"}}>
             <h1 style={{ color: 'white'}}>
-                 Pizza Maker
+                 Pizza-Maker
             </h1>
             </Link>
             </div>
