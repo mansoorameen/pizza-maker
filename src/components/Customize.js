@@ -143,9 +143,8 @@ function Customize({ ingredients, setIngredients }) {
          
             <Link to="/checkout">
             
-            <button 
-            style={{ backgroundColor: 'yellow', padding: '0.5rem', borderRadius: '50px', margin: '1rem 1rem 1rem 2rem'  }}>
-                <h3>Checkout</h3>
+            <button className='btn'>
+                Checkout
                 </button>
         
             </Link>
